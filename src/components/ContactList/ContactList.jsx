@@ -7,7 +7,7 @@ class ContactList extends Component {
     const { contacts, filter, handleDelete } = this.props;
     return (
       <div className={css.contactsContainer}>
-        <ul>
+        <ul className={css.contactList}>
           {contacts
             .filter(el => {
               return el.name.toLowerCase().includes(filter.toLowerCase());
@@ -17,6 +17,7 @@ class ContactList extends Component {
                 {contact.name}: {contact.number}
                 <button
                   type="button"
+                  className={css.deleteButton}
                   onClick={() => handleDelete(contact.id)}
                   style={{ marginLeft: 10 }}
                 >

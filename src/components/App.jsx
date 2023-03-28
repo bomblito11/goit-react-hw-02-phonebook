@@ -22,15 +22,18 @@ export class App extends Component {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
 
-    if (this.state.contacts.find(contact => contact.name === name)) {
+    if (
+      this.state.contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       alert(`${name} is already in contacts.`);
     } else {
       this.setState({
         contacts: [...this.state.contacts, { id: nanoid(), name, number }],
       });
+      form.reset();
     }
-
-    form.reset();
   };
 
   handleChange = key => {
